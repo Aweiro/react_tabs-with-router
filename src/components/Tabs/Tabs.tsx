@@ -7,9 +7,9 @@ export const Tabs = () => {
     { id: 'tab-2', title: 'Tab 2', content: 'Some text 2' },
     { id: 'tab-3', title: 'Tab 3', content: 'Some text 3' },
   ];
-  const { tabId } = useParams();
-  const activeId =
-    tabList.find(tab => tab.id === tabId)?.content || 'Please select a tab';
+  const { tabId } = useParams<{ tabId?: string }>();
+  const activeTab = tabList.find(t => t.id === tabId);
+  const content = activeTab ? activeTab.content : 'Please select a tab';
 
   return (
     <>
@@ -34,7 +34,7 @@ export const Tabs = () => {
       </div>
 
       <div className="block" data-cy="TabContent">
-        {activeId}
+        {content}
       </div>
     </>
   );

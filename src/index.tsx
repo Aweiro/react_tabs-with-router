@@ -14,7 +14,7 @@ const Root = () => (
         <Route index element={<Home />} />
 
         <Route path="tabs">
-          <Route index element={<Tabs />} />
+          <Route index element={<Tabs/>} />
           <Route path=":tabId" element={<Tabs />} />
         </Route>
 
