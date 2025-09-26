@@ -6,9 +6,8 @@ import classNames from 'classnames';
 
 export const App = () => {
   const { pathname } = useLocation();
-
-  if (pathname === '/') {
-  }
+  const isHome = pathname === '/';
+  const isTabs = pathname.startsWith('/tabs');
 
   return (
     <>
@@ -18,22 +17,12 @@ export const App = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link
-              to="/"
-              className={classNames('navbar-item', {
-                'is-active': pathname === '/',
-              })}
-            >
-              Home
-            </Link>
-            <Link
-              to="/tabs"
-              className={classNames('navbar-item', {
-                'is-active': pathname.startsWith('/tabs'),
-              })}
-            >
-              Tabs
-            </Link>
+            <div className={classNames('navbar-item', { 'is-active': isHome })}>
+              <Link to="/">Home</Link>
+            </div>
+            <div className={classNames('navbar-item', { 'is-active': isTabs })}>
+              <Link to="/tabs">Tabs</Link>
+            </div>
           </div>
         </div>
       </nav>
